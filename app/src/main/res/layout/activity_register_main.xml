@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/grad"
+    tools:context=".RegisterMainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="39dp"
+            tools:layout_editor_absoluteY="-16dp">
+
+
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="313dp"
+                android:layout_height="216dp"
+                app:srcCompat="@drawable/logof" />
+
+            <EditText
+                android:id="@+id/register_email"
+                android:layout_width="wrap_content"
+                android:layout_height="59dp"
+                android:layout_marginBottom="20dp"
+                android:ems="10"
+                android:hint="Email"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/register_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:minHeight="48dp" />
+
+            <Button
+                android:id="@+id/btn_register"
+                android:layout_width="242dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:text="Register"
+                app:cornerRadius="100dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="OR"
+                android:textAppearance="?android:textAppearanceLarge" />
+
+            <Button
+                android:id="@+id/btn_login"
+                android:layout_width="242dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:text="Log in"
+                app:cornerRadius="100dp" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
