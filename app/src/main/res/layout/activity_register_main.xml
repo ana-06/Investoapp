@@ -22,12 +22,52 @@
             tools:layout_editor_absoluteY="-16dp">
 
 
-
             <ImageView
                 android:id="@+id/imageView2"
-                android:layout_width="313dp"
-                android:layout_height="216dp"
+                android:layout_width="200dp"
+                android:layout_height="150dp"
                 app:srcCompat="@drawable/logof" />
+
+<!--            <de.hdodenhof.circleimageview.CircleImageView-->
+<!--                android:id="@+id/profile_image"-->
+<!--                android:layout_width="248dp"-->
+<!--                android:layout_height="150dp"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:layout_marginEnd="24dp"-->
+<!--                android:src="@drawable/logof"-->
+<!--                app:civ_border_color="#FF000000"-->
+<!--                app:civ_border_width="2dp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
+<!--            <EditText-->
+<!--                android:id="@+id/register_name"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="59dp"-->
+<!--                android:layout_marginBottom="20dp"-->
+<!--                android:ems="10"-->
+<!--                android:text="Name"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:inputType="textPersonName" />-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/register_about"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="59dp"-->
+<!--                android:layout_marginBottom="20dp"-->
+<!--                android:ems="10"-->
+<!--                android:text="About"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:inputType="textPersonName" />-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/register_phone"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="59dp"-->
+<!--                android:layout_marginBottom="20dp"-->
+<!--                android:ems="10"-->
+<!--                android:text="Number"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:inputType="textPersonName" />-->
 
             <EditText
                 android:id="@+id/register_email"
@@ -36,6 +76,7 @@
                 android:layout_marginBottom="20dp"
                 android:ems="10"
                 android:hint="Email"
+                android:textColor="@color/white"
                 android:inputType="textPersonName" />
 
             <EditText
@@ -44,6 +85,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Password"
+                android:textColor="@color/white"
                 android:inputType="textPassword"
                 android:minHeight="48dp" />
 

@@ -29,10 +29,10 @@ public class RegisterMainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {  // oncreate sets the view whenever we open the app //savedInstanceState is used to save the state of application
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_main);
-        mAuth=FirebaseAuth.getInstance();// to perform various operations on database
+        mAuth=FirebaseAuth.getInstance();// to perform various operations on database(intializing the FireBaseAuth instance)
 
         emailReg = findViewById(R.id.register_email);
         passReg = findViewById(R.id.register_password);
@@ -58,6 +58,7 @@ public class RegisterMainActivity extends AppCompatActivity {
                 mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                         if (task.isSuccessful()) {
                             // toast- small  message on the screen for a short duration of time
                             Toast.makeText(getApplicationContext(), "Successfull", Toast.LENGTH_SHORT).show();
