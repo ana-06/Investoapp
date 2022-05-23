@@ -1,4 +1,6 @@
-package com.sukrutha.investo4.model;
+package com.sukrutha.investo4;
+
+import android.net.Uri;
 
 public class post {
     private String postId;
@@ -7,6 +9,9 @@ public class post {
     private String postDescription;
     private long postedAt;
     public post(){
+
+
+
     }
     public post(String postId, String postImage, String postedBy, String postDescription, long postedAt) {
         this.postId = postId;

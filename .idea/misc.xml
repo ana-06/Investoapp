@@ -10,12 +10,15 @@
         <entry key="..\:/Users/Sukrutha/AndroidStudioProjects/Investo4/app/src/main/res/layout/activity_home.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/Sukrutha/AndroidStudioProjects/Investo4/app/src/main/res/layout/activity_main.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/Sukrutha/AndroidStudioProjects/Investo4/app/src/main/res/layout/activity_post.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/Sukrutha/AndroidStudioProjects/Investo4/app/src/main/res/layout/activity_register_details.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/Sukrutha/AndroidStudioProjects/Investo4/app/src/main/res/layout/activity_register_main.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/Sukrutha/AndroidStudioProjects/Investo4/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/Users/Sukrutha/AndroidStudioProjects/Investo4/app/src/main/res/layout/fragment_notification.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/Sukrutha/AndroidStudioProjects/Investo4/app/src/main/res/layout/fragment_notification2.xml" value="0.17552083333333332" />
-        <entry key="..\:/Users/Sukrutha/AndroidStudioProjects/Investo4/app/src/main/res/layout/fragment_profile.xml" value="0.16666666666666666" />
-        <entry key="..\:/Users/Sukrutha/AndroidStudioProjects/Investo4/app/src/main/res/layout/fragment_search.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/Sukrutha/AndroidStudioProjects/Investo4/app/src/main/res/layout/fragment_profile.xml" value="0.22" />
+        <entry key="..\:/Users/Sukrutha/AndroidStudioProjects/Investo4/app/src/main/res/layout/fragment_request.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/Sukrutha/AndroidStudioProjects/Investo4/app/src/main/res/layout/fragment_search.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/Sukrutha/AndroidStudioProjects/Investo4/app/src/main/res/layout/homepost_rv.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/Sukrutha/AndroidStudioProjects/Investo4/app/src/main/res/layout/item_add.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/Sukrutha/AndroidStudioProjects/Investo4/app/src/main/res/layout/item_email.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/Sukrutha/AndroidStudioProjects/Investo4/app/src/main/res/layout/item_image.xml" value="0.17552083333333332" />

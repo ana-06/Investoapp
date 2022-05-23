@@ -40,11 +40,11 @@ public class Notification2Fragment extends Fragment {
         recyclerView = view.findViewById(R.id.notification2RV);
          list = new ArrayList<>();
          list.add(new NotificationModel(R.drawable.img,"Sukrutha mentioned you in a comment : try again "));
-         list.add(new NotificationModel(R.drawable.img,"Sukrutha mentioned you in a comment : try again "));
-         list.add(new NotificationModel(R.drawable.img,"Sukrutha mentioned you in a comment : try again "));
-         list.add(new NotificationModel(R.drawable.img,"Sukrutha mentioned you in a comment : try again "));
-         list.add(new NotificationModel(R.drawable.img,"Sukrutha mentioned you in a comment : try again "));
-         list.add(new NotificationModel(R.drawable.img,"Sukrutha mentioned you in a comment : try again "));
+         list.add(new NotificationModel(R.drawable.avinash,"Avinash mentioned you in a comment : try again "));
+         list.add(new NotificationModel(R.drawable.nitya,"Nitya started following you"));
+         list.add(new NotificationModel(R.drawable.vidhi,"Vidhi mentioned you in a comment : try again "));
+         list.add(new NotificationModel(R.drawable.shubha,"Subha liked your picture"));
+         list.add(new NotificationModel(R.drawable.mohithk,"Mohith mentioned you in a comment : try again "));
          list.add(new NotificationModel(R.drawable.img,"Sukrutha mentioned you in a comment : try again "));
 
         NotificationAdapter adapter = new NotificationAdapter(list, getContext());

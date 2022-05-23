@@ -13,6 +13,14 @@
 
     <include layout="@layout/item_image" />
 
+    <TextView
+        android:id="@+id/Uname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="20dp" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -31,4 +39,5 @@
 
         </LinearLayout>
     </ScrollView>
+
 </LinearLayout>

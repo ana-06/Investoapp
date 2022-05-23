@@ -13,6 +13,8 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.sukrutha.investo4.fragments.HomeFragment;
 import com.sukrutha.investo4.fragments.NotificationFragment;
 import com.sukrutha.investo4.fragments.ProfileFragment;
@@ -30,9 +32,16 @@ public class FeedActivity extends AppCompatActivity {
         setContentView(R.layout.activity_feed);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("message");
+
+        myRef.setValue("Hello, World!");
 
         // called when an item in navigation menu is selected
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
+
+
+
 
 
             @Override

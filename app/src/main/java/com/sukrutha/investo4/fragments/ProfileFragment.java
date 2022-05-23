@@ -1,50 +1,55 @@
 package com.sukrutha.investo4.fragments;
 
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.squareup.picasso.Picasso;
 import com.sukrutha.investo4.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ProfileFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class ProfileFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    EditText number;
+    EditText about;
+    ImageView profile;
+    EditText editText;
+    TextView Usname;
     public ProfileFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ProfileFragment.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static ProfileFragment newInstance(String param1, String param2) {
         ProfileFragment fragment = new ProfileFragment();
         Bundle args = new Bundle();
@@ -69,16 +74,51 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        EditText editText = (EditText) view.findViewById(R.id.mailId);
-        String email;
-        email= FirebaseAuth.getInstance().getCurrentUser().getEmail().trim();
-        editText.setText(email);
+
+        //number.setText(FirebaseFirestore.getInstance().collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        number = view.findViewById(R.id.PhoneNumber);
+        about = view.findViewById(R.id.editTextTextMultiLine);
+        profile  = view.findViewById(R.id.profile_image);
+        Usname = view.findViewById(R.id.Uname);
+        db.collection("users")
+                .document(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                editText = (EditText) view.findViewById(R.id.mailId);
+                String email;
+                email= FirebaseAuth.getInstance().getCurrentUser().getEmail().trim();
+                editText.setText(email);
+
+
+
+                Log.d("gotit", documentSnapshot.getId() + " => " +documentSnapshot.getData()+FirebaseAuth.getInstance().getCurrentUser().getUid());
+                number.setText(documentSnapshot.getString("number"));
+                about.setText(documentSnapshot.getString("about"));
+                Usname.setText(documentSnapshot.getString("name"));
+
+
+
+
+            }
+        });
+        db.collection("usersPic").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                String profileURL = documentSnapshot.getString("profile");
+                Picasso.get().load(profileURL).placeholder(R.drawable.img).into(profile);
+
+            }
+        });
+
+
 
     }
 }

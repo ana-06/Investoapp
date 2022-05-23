@@ -98,6 +98,9 @@ public class MainActivity extends AppCompatActivity { // inheritance MainActivit
                             mdialog.dismiss();
                         }
                         else{
+
+                            mdialog.dismiss();
+
                             Toast.makeText(getApplicationContext(),"Login Failed..", Toast.LENGTH_SHORT).show();
                         }
                     }

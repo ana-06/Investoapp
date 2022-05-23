@@ -37,7 +37,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         String title = null;
         if(position==0){
-            title="NOTICIATION";
+            title="NOTIFICATION";
         }
         else if(position==1){
             title="REQUEST";
