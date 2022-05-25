@@ -19,11 +19,11 @@ public class MyUser {
 
 
     public String getNumber() {
-        return name;
+        return number;
     }
 
-    public void setNumber(String name) {
-        this.name = name;
+    public void setNumber(String number) {
+        this.number = number;
     }
 
     public String getName() {

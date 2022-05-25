@@ -11,18 +11,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sukrutha.investo4.R;
-import com.sukrutha.investo4.model.HomePostModel;
+
+import com.sukrutha.investo4.model.SearchModel;
 
 import java.util.ArrayList;
 
 
+public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.viewHolder> {
 
-public class HomePostAdapter extends RecyclerView.Adapter<HomePostAdapter.viewHolder> {
-
-    ArrayList<HomePostModel> list;
+    ArrayList<SearchModel> list;
     Context context;
 
-    public HomePostAdapter(ArrayList<HomePostModel> list, Context context) {
+    public SearchAdapter(ArrayList<SearchModel> list, Context context) {
         this.list = list;
         this.context = context;
     }
@@ -31,7 +31,7 @@ public class HomePostAdapter extends RecyclerView.Adapter<HomePostAdapter.viewHo
     @Override
     public viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // to inflate the layout which is created
-        View view = LayoutInflater.from(context).inflate(R.layout.homepost_rv,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.search_rv,parent,false);
         //passing the view
         return new viewHolder(view);
     }
@@ -39,13 +39,12 @@ public class HomePostAdapter extends RecyclerView.Adapter<HomePostAdapter.viewHo
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
 
-        HomePostModel model = list.get(position);
-
+        //  SearchModel model = list.get(position);
+        SearchModel model = list.get(position);
         holder.profile.setImageResource(model.getProfile());
-        holder.postImage.setImageResource(model.getPostImage());
+
         holder.name.setText(model.getName());
-        holder.like.setText(model.getLike());
-        holder.comment.setText(model.getComment());
+
     }
 
     @Override
@@ -56,23 +55,16 @@ public class HomePostAdapter extends RecyclerView.Adapter<HomePostAdapter.viewHo
     public class viewHolder extends RecyclerView.ViewHolder{
 
 
-        ImageView profile,postImage;
-        TextView name, comment, like;
+        ImageView profile;
+        TextView name;
 
         public viewHolder(@NonNull View itemView) {
             super(itemView);
 
             profile = itemView.findViewById(R.id.profile_image);
-            postImage = itemView.findViewById(R.id.postImg);
+
             name = itemView.findViewById(R.id.userName);
-            comment = itemView.findViewById(R.id.comment);
-            like = itemView.findViewById(R.id.like);
+
         }
     }
-
 }
-
-
-
-
-

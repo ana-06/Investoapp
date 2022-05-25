@@ -41,8 +41,9 @@ public class PostActivity extends AppCompatActivity {
     private ImageView img;
     private FirebaseAuth mauth;
     FirebaseDatabase database;
+    StorageReference filePath;
     post pst = new post();
-
+    String des;
     static final int REQUEST_IMAGE_CAPTURE = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +90,14 @@ public class PostActivity extends AppCompatActivity {
         return true;
     }
 
+
+
+
+
+
+
+
+
     @Override
     protected void onActivityResult(int rqc , int rc , @Nullable Intent data){
         super.onActivityResult(rqc,rc,data);
@@ -96,51 +105,53 @@ public class PostActivity extends AppCompatActivity {
             uri = data.getData();
             imageAdded=findViewById(R.id.image_added);
             //Uri uri = data.getData();
+
             imageAdded.setImageURI(uri);
 
+            pst.setPostImage(uri.toString());
+                            pst.setPostedAt(new Date().getTime());
+
+                            pst.setPostedBy(FirebaseAuth.getInstance().getUid());
+                            pst.setPostDescription(des);
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+            db.collection("Post").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).set(pst);
+
+//            filePath = FirebaseStorage.getInstance().getReference("Posts").child(FirebaseAuth.getInstance().getUid()).child(new Date().getTime()
+//                    + "");
+//            filePath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                @Override
+//                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                    filePath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+//                        @Override
+//                        public void onSuccess(Uri uri) {
+//                            pst.setPostImage(uri.toString());
+//                            pst.setPostedAt(new Date().getTime());
+//                            //pst.setPostImage(uri.toString());
+//                            pst.setPostedBy(FirebaseAuth.getInstance().getUid());
+//                            pst.setPostDescription(des);
+//                            database.getReference().child("Post").push().setValue(pst).addOnSuccessListener(new OnSuccessListener<Void>() {
+//                                @Override
+//                                public void onSuccess(Void unused) {
+//                                    Toast.makeText(PostActivity.this, "Added", Toast.LENGTH_SHORT).show();
+//                                    Intent intent = new Intent(PostActivity.this,FeedActivity.class);
+//                                    startActivity(intent);
+//                                }
+//                            }).addOnFailureListener(new OnFailureListener() {
+//                                @Override
+//                                public void onFailure(@NonNull Exception e) {
+//                                    Log.d("lode lag gaye", "onFailure: I cant do that");
+//                                }
+//                            });
+//                        }
+//                    });
 
 
-
-        }
-    }
-
-    public void posted(View view){
-
-        EditText editText = findViewById(R.id.editTextTextMultiLine);
-        String des = editText.getText().toString();
-
-
-
-        final StorageReference filePath = FirebaseStorage.getInstance().getReference("Posts").child(FirebaseAuth.getInstance().getUid()).child(new Date().getTime()
-                + "");
-
-        filePath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                filePath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        pst.setPostImage(uri.toString());
-                        pst.setPostedAt(new Date().getTime());
-                        //pst.setPostImage(uri.toString());
-                        pst.setPostedBy(FirebaseAuth.getInstance().getUid());
-                        pst.setPostDescription(des);
-                        database.getReference().child("Post").push().setValue(pst).addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void unused) {
-                                Toast.makeText(PostActivity.this, "Added", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(PostActivity.this,FeedActivity.class);
-                                startActivity(intent);
-                            }
-                        });
-                    }
-                });
-
-                FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-                String uid = FirebaseAuth.getInstance().getCurrentUser().getUid().trim();
-                db.collection("Post").document(uid).set(pst);
-                // FirebaseDatabase database = FirebaseDatabase.getInstance();
+//                    FirebaseFirestore db = FirebaseFirestore.getInstance();
+//
+//                    String uid = FirebaseAuth.getInstance().getCurrentUser().getUid().trim();
+//                    db.collection("Post").document(uid).set(pst);
+                    // FirebaseDatabase database = FirebaseDatabase.getInstance();
 //                database.getReference().child("Post").push().setValue(pst).addOnSuccessListener(new OnSuccessListener<Void>() {
 //                    @Override
 //                    public void onSuccess(Void unused) {
@@ -153,8 +164,26 @@ public class PostActivity extends AppCompatActivity {
 //                        Toast.makeText(PostActivity.this, "Failed", Toast.LENGTH_SHORT).show();
 //                    }
 //                });
-            }
-        });
+//                }
+//            });
+
+
+
+
+        }
+    }
+
+    public void posted(View view){
+
+        EditText editText = findViewById(R.id.editTextTextMultiLine );
+        des= editText.getText().toString();
+
+
+
+         filePath = FirebaseStorage.getInstance().getReference("Posts").child(FirebaseAuth.getInstance().getUid()).child(new Date().getTime()
+                + "");
+
+
 
 
         Intent intent = new Intent(PostActivity.this, FeedActivity.class);

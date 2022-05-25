@@ -1,5 +1,6 @@
 package com.sukrutha.investo4.fragments;
 
+import android.app.ProgressDialog;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -16,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -45,6 +47,9 @@ public class ProfileFragment extends Fragment {
     ImageView profile;
     EditText editText;
     TextView Usname;
+
+    private ProgressDialog mdialog;
+
     public ProfileFragment() {
         // Required empty public constructor
     }
@@ -62,6 +67,8 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -88,6 +95,16 @@ public class ProfileFragment extends Fragment {
         about = view.findViewById(R.id.editTextTextMultiLine);
         profile  = view.findViewById(R.id.profile_image);
         Usname = view.findViewById(R.id.Uname);
+
+
+        ProgressDialog progressBar = new ProgressDialog(view.getContext());
+       // progressBar.setCancelable(true);//you can cancel it by pressing back button
+        //progressBar.setMessage("Loading....");
+        progressBar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        //progressBar.setProgress(0);//initially progress is 0
+        //progressBar.setMax(100);//sets the maximum value 100
+        progressBar.show();//displays the progress bar
+
         db.collection("users")
                 .document(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
@@ -105,10 +122,10 @@ public class ProfileFragment extends Fragment {
                 Usname.setText(documentSnapshot.getString("name"));
 
 
-
-
             }
         });
+
+
         db.collection("usersPic").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -117,8 +134,7 @@ public class ProfileFragment extends Fragment {
 
             }
         });
-
-
+        progressBar.dismiss();
 
     }
 }
